@@ -4,9 +4,11 @@
   "description": "Windows 端用 nodejs 自建 WebDAV 音樂伺服器，讓 iPhone 端可以收聽",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dummy": "echo \"Error: no test specified\" && exit 1",
+    "test": "node server-test.js",
     "dev": "node server.js",
-    "build": "pkg server.js --target node18-win-x64 --output music-server.exe"
+    "build": "pkg server.js --target node18-win-x64 --output music-server.exe",
+    "start": "music-server.exe"
   },
   "repository": {
     "type": "git",
