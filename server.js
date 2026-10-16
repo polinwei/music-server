@@ -10,8 +10,32 @@ const PORT = 8010; // 伺服器監聽的 port
 
 // 自動抓取執行檔所在目錄下的 "Music" 資料夾
 // 如果是開發階段 (node server.js)，則會抓取當前專案目錄下的 Music 資料夾
-const baseDir = process.pkg ? path.dirname(process.execPath) : __dirname;
+// 1. 判斷是否為 Node.js 官方 SEA 環境
+const isSea = process.isSEA ? process.isSEA() : false;
+
+// 2. 判斷是否為 pkg 打包環境
+const isPkg = process.pkg ? true : false;
+
+// 3. 根據不同的執行環境，動態決定基礎目錄 (baseDir)
+let baseDir;
+
+if (isSea) {
+    // 官方 SEA 打包後，process.execPath 就是 .exe 的絕對路徑
+    baseDir = path.dirname(process.execPath);
+} else if (isPkg) {
+    // pkg 打包後，process.execPath 同樣是 .exe 的絕對路徑
+    baseDir = path.dirname(process.execPath);
+} else {
+    // VS Code 開發偵錯或直接執行 node server.js 時，使用當前腳本所在的目錄
+    baseDir = __dirname;
+}
+
+// 4. 最終指向 Music 資料夾
 const MUSIC_FOLDER = path.join(baseDir, 'Music');
+// 測試列印（可在偵錯時確認路徑是否正確）
+console.log(`[環境偵測] SEA: ${isSea}, Pkg: ${isPkg}`);
+console.log(`[資料夾路徑] ${MUSIC_FOLDER}`);
+
 
 // 自動建立音樂資料夾（如果不存在的話）
 if (!fs.existsSync(MUSIC_FOLDER)) {

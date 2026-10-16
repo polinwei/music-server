@@ -7,7 +7,8 @@
     "dummy": "echo \"Error: no test specified\" && exit 1",
     "test": "node server-test.js",
     "dev": "node server.js",
-    "build": "pkg server.js --target node18-win-x64 --output music-server.exe",
+    "build:pkg": "pkg server.js --target node18-win-x64 --output music-server.exe",
+    "build:sea": "node sea-build.js",
     "start": "music-server.exe"
   },
   "repository": {
