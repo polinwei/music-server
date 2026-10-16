@@ -8,7 +8,7 @@
     "test": "node server-test.js",
     "dev": "node server.js",
     "build:pkg": "pkg server.js --target node18-win-x64 --output music-server.exe",
-    "build:sea": "node sea-build.js",
+    "build:sea": "npx esbuild server.js --bundle --platform=node --target=node26 --outfile=dist/bundle.js && node sea-build.js",
     "start": "music-server.exe"
   },
   "repository": {
@@ -25,5 +25,8 @@
   "homepage": "https://github.com/polinwei/music-server#readme",
   "dependencies": {
     "webdav-server": "^2.6.3"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2"
   }
 }

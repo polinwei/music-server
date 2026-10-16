@@ -1,5 +1,6 @@
 {
-  "main": "server.js",
-  "output": "sea-prep.blob",
-  "disableSentinel": false
+  "main": "dist/bundle.js",
+  "output": "music-server.exe",
+  "mainFormat": "commonjs",
+  "disableExperimentalSEAWarning": true
 }
