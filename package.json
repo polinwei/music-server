@@ -1,0 +1,26 @@
+{
+  "name": "music-server",
+  "version": "1.0.0",
+  "description": "Windows 端用 nodejs 自建 WebDAV 音樂伺服器，讓 iPhone 端可以收聽",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node server.js",
+    "build": "pkg server.js --target node18-win-x64 --output music-server.exe"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polinwei/music-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/polinwei/music-server/issues"
+  },
+  "homepage": "https://github.com/polinwei/music-server#readme",
+  "dependencies": {
+    "webdav-server": "^2.6.3"
+  }
+}
